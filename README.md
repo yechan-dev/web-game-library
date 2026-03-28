@@ -3,7 +3,7 @@
 ### 간단하게 웹에서 게임을 만들 수 있도록 도와주는 JavaScript 라이브러리입니다.
 
 ## ❓How to use
-** 당신의 HTML 파일의 body 부분에 다음 코드를 붙이세요.**
+** 당신의 HTML 파일의 body 부분에 다음 코드를 붙이세요. **
 ```html
 <script src="https://yechan-dev.github.io/web-game-library/library.js"></script>
 ```
