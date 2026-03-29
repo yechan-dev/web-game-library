@@ -56,6 +56,17 @@ sprite.moveX(px);
 sprite.moveY(px);
 ```
 ---
+- **setGravity**
+```js
+sprite.setGravity(px);
+```
+---
+- **flip**
+```js
+sprite.flipX(bool);
+sprite.flipY(bool);
+```
+---
 ### 🔧 Modify / Add sprite
 ##### 스프라이트의 여러가지 기본 요소들을 수정하는 코드입니다.
 ---
