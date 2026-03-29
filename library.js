@@ -121,6 +121,7 @@ function createSprite(){
         set texture(value){
             this.sprite.style.backgroundImage = `url(${value})`;
             this.sprite.style.backgroundSize = "cover";
+            this.sprite.style.backgroundPosition = "center";
         },
     };
 }
