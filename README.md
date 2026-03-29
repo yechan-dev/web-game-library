@@ -60,6 +60,11 @@ sprite.y = px;
 sprite.texture = image;
 ```
 
+**setPosition**
+```js
+sprite.setPosition(x, y);
+```
+
 **setSize**
 ```js
 sprite.setSize(x, y);
@@ -73,6 +78,11 @@ sprite.hide();
 **show**
 ```js
 sprite.show();
+```
+
+**block**
+```js
+wall.block(player);
 ```
 ---
 ### Animation

@@ -16,10 +16,11 @@ function onKeyUp(key, callback){
 }
 function createSprite(){
     const sprite = document.createElement("div");
-    sprite.style.position = "relative";
+    sprite.style.position = "absolute";
     document.body.appendChild(sprite);
     let velocityX = 0;
     let velocityY = 0;
+    let rotation = 0;
     const overlaps = [];
     function update(){
         const x = parseInt(sprite.style.left) || 0;
@@ -44,6 +45,12 @@ function createSprite(){
         setVelocityY(value){
             velocityY = value;
         },
+        get velocityX(){
+            return velocityX;
+        },
+        get velocityY(){
+            return velocityY;
+        },
         moveX(value){
             const current = parseInt(this.sprite.style.left) || 0;
             this.sprite.style.left = (current + value) + "px";
@@ -56,6 +63,14 @@ function createSprite(){
             this.sprite.style.width = x_len + "px";
             this.sprite.style.height = y_len + "px";
         },
+        setPosition(x_pos, y_pos){
+            this.sprite.style.left = x_pos + "px";
+            this.sprite.style.top = y_pos + "px";
+        },
+        turn(degree){
+            rotation += degree;
+            this.sprite.style.transform = `rotate(${rotation}deg)`;
+        },
         hide(){
             this.sprite.style.display = "none";
         },
@@ -66,12 +81,12 @@ function createSprite(){
             overlaps.push({ target, callback });
         },
         onClick(callback){
-            this.sprite.addEventListener("click", () => {
+            this.sprite.addEventListener("mousedown", () => {
                 callback();
             });
         },
         onClickUp(callback){
-            this.sprite.addEventListener("click", () => {
+            this.sprite.addEventListener("mouseup", () => {
                 callback();
             });
         },
@@ -82,6 +97,14 @@ function createSprite(){
                 this.texture = pictures[scenes];
                 scenes = (scenes + 1) % pictures.length;
             }, ms);
+        },
+        block(target){
+            target.onOverlap(this, () => {
+                const x = parseInt(target.sprite.style.left) || 0;
+                const y = parseInt(target.sprite.style.top) || 0;
+                target.sprite.style.left = (x - target.velocityX) + "px";
+                target.sprite.style.top = (y - target.velocityY) + "px";
+            });
         },
         stopAnimation(){
             if (this.animationId) {
